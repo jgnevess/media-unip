@@ -14,6 +14,10 @@
 ---
 
 ## 📸 Capturas de Tela | Screenshots
+
+![LightScreenshot](screenshots/lightsc.png)
+![DarkScreenshot](screenshots/darksc.png)
+
 ---
 ## 🛠️ Tecnologias | Technologies
 
