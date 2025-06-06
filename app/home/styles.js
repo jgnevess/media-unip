@@ -17,6 +17,7 @@ export const SubTitle = styled.Text`
     color: ${props => props.theme.secondary};
     font-size: 16px;
     padding: 16px;
+    text-align: center;
 `;
 
 export const Txt = styled.Text`
@@ -30,7 +31,8 @@ export const Input = styled.TextInput`
     border: 1px solid ${props => props.theme.border};
     width: 75%;
     margin-top: 10px;
-    border-radius: 5px
+    border-radius: 5px;
+    padding: 15px;
 `;
 
 export const Btn = styled.Pressable`
@@ -38,7 +40,7 @@ export const Btn = styled.Pressable`
     border-width: 1px;
     border-color: ${props => props.theme.btnPrimary};
     width: 75%;
-    margin-top: 10px;
+    margin-top: 20px;
     padding: 10px;
     align-items: center;
     border-radius: 5px
@@ -49,4 +51,23 @@ export const Media = styled.Text`
     font-size: 24px;
     padding: 16px;
     text-align: center;
+`;
+
+export const ModalResponse = styled.View`
+    background: ${props => props.theme.backgroundModal};
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    max-height: 40%;
+    border-radius: 20px
+`;
+
+export const CloseButton = styled.Pressable`
+    z-index: 999;
+    margin-bottom: -20%;
+    margin-start: 60%;
+    border: 1px solid ${props => props.theme.secondary};
+    color: ${props => props.theme.secondary};
+    border-radius: 10px;
 `;

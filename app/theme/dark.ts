@@ -5,4 +5,5 @@ export default {
     border: '#333333',
     btnPrimary: '#1E3A8A',
     error: '#CF6679',
+    backgroundModal: '#212121',
 }

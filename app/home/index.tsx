@@ -1,7 +1,8 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native';
-import { Btn, Input, Media, SubTitle, Title, Txt, Wrapper } from './styles';
+import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Btn, CloseButton, Input, Media, SubTitle, Title, Txt, Wrapper } from './styles';
 import { useState } from 'react';
 import { calcularMedia, handleChange, Style } from './functions';
+import Modal from '../components';
 
 const Home = () => {
 
@@ -11,7 +12,8 @@ const Home = () => {
     const [exame, setExame] = useState('')
     const [msg, setMsg] = useState('')
     const [status, setStatus] = useState('')
-    const [style, setStyle] = useState<Style>()
+    const [styled, setStyled] = useState<Style>()
+    const [response, setResponse] = useState(false)
 
     const handleChangeNp1 = (entrada: string) => {
         const res = handleChange(entrada);
@@ -43,16 +45,30 @@ const Home = () => {
     }
 
     const handleCalcMedia = () => {
-        const res = calcularMedia({np1, np2, pim, exame});
+        const res = calcularMedia({ np1, np2, pim, exame });
         setMsg(res.msg)
         setStatus(res.status)
-        setStyle(res.style)
+        setStyled(res.styled)
+        setResponse(!response)
+    }
+
+    const handleModal = () => {
+        setResponse(false);
+    }
+
+    if (response) {
+        return (
+            <Wrapper>
+                <CloseButton onPress={handleModal}><Media>❌</Media></CloseButton>
+                <Modal msg={msg} status={status} styled={styled!} />
+            </Wrapper>
+        )
     }
 
     return (
         <Wrapper>
-            <Title>Média</Title>
-            <SubTitle>Vamos calcular a média das notas</SubTitle>
+            <Title>Média Unip</Title>
+            <SubTitle>Insira suas notas nos campos abaixo e clique em calcular nota</SubTitle>
             <Txt>Insira a nota da NP1</Txt>
             <Input
                 value={np1}
@@ -73,10 +89,8 @@ const Home = () => {
                 value={exame}
                 keyboardType='numeric'
                 onChangeText={handleChangeExame} />
-            <Btn onPress={handleCalcMedia}><Text style={styles.txt}>Calcular Média</Text></Btn>
-            <Btn onPress={handleClean}><Text style={styles.txt}>Limpar campos</Text></Btn>
-            <Media style={style}>{status}</Media>
-            <Media>{msg}</Media>
+            <Btn onPress={handleCalcMedia}><Text style={styles.txt}>Calcular Média 🧮</Text></Btn>
+            <Btn onPress={handleClean}><Text style={styles.txt}>Limpar campos 🧹</Text></Btn>
         </Wrapper>
     );
 }
