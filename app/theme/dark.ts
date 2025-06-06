@@ -1,9 +1,11 @@
 export default {
     background: '#121212',
-    primary: '#E0E0E0',
-    secondary: '#B0B0B0',
+    primary: '#E9ECEF',
+    secondary: '#ADB5BD',
     border: '#333333',
-    btnPrimary: '#1E3A8A',
-    error: '#CF6679',
-    backgroundModal: '#212121',
+    btnPrimary: '#7B4BFF',
+    error: '#FF5252',
+    backgroundModal: '#1E1E1E',
+    success: '#4CAF50',
+    warning: '#FFD600',
 }

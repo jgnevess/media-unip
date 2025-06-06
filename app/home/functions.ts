@@ -36,11 +36,11 @@ export const calcularMedia = ({ np1, np2, pim, exame }: MediaCalc) : Response =>
         if (pim == '') {
             const media = (Number.parseFloat(np1) * 4 + Number.parseFloat(np2) * 4) / 10;
             if (media >= 7) {
-                return {msg : `Você está com ${media.toFixed(1)}`, status: 'Aprovado', styled : {color: '#198754', fontSize: 36 }}
+                return {msg : `Você está com ${media.toFixed(1)}`, status: 'Aprovado 😝', styled : {color: '#4CAF50', fontSize: 24 }}
             }
             else {
                 const notapim = (7 - media) / 0.20;
-                return {msg : `Você está com ${media.toFixed(1)} e precisa tirar nota ${notapim.toFixed(1)} no pim`, status: 'Aguardando Pim', styled : {color: '#ffc107', fontSize: 36 }}
+                return {msg : `Você está com ${media.toFixed(1)} e precisa tirar nota ${notapim.toFixed(1)} no pim`, status: 'Aguardando Pim 🧐', styled : {color: '#FFD600', fontSize: 24 }}
             }
         }
         else if (exame == '') {
@@ -55,13 +55,13 @@ export const calcularMedia = ({ np1, np2, pim, exame }: MediaCalc) : Response =>
             if (media < 7) {
                 if (mf1 < 7) {
                     const mf = (10 - media);
-                    return {msg : `Você está com ${media.toFixed(1)} e precisa tirar nota ${mf.toFixed(1)} no exame`, status: 'Exame', styled : {color: '#ffc107', fontSize: 36 }}
+                    return {msg : `Você está com ${media.toFixed(1)} e precisa tirar nota ${mf.toFixed(1)} no exame`, status: 'Exame 😰', styled : {color: '#FFD600', fontSize: 24 }}
                 }
                 else {
-                    return {msg : `Você está com ${media.toFixed(1)} e a nota arredondou para ${mf1}`, status: 'Aprovado', styled : {color: '#198754', fontSize: 36 }}
+                    return {msg : `Você está com ${media.toFixed(1)} e a nota arredondou para ${mf1}`, status: 'Aprovado 😝', styled : {color: '#4CAF50', fontSize: 24 }}
                 }
             } else {
-                return {msg : `Você está com ${media.toFixed(1)}`, status: 'Aprovado', styled : {color: '#198754', fontSize: 36 }}
+                return {msg : `Você está com ${media.toFixed(1)}`, status: 'Aprovado 😝', styled : {color: '#4CAF50', fontSize: 24 }}
             }
 
         }
@@ -74,16 +74,16 @@ export const calcularMedia = ({ np1, np2, pim, exame }: MediaCalc) : Response =>
             const mf2 = (Number.parseFloat(exame) + media) / 2;
             const mf3 = round(mf2);
             if (mf2 >= 5) {
-                return {msg : `Você está com ${mf2.toFixed(1)}`, status: 'Aprovado', styled : {color: '#198754', fontSize: 36 }}
+                return {msg : `Você está com ${mf2.toFixed(1)}`, status: 'Aprovado 😝', styled : {color: '#4CAF50', fontSize: 24 }}
             }
             else if (mf3 >= 5) {
-                return {msg : `Você está com ${mf2.toFixed(1)} e sua nota arredondou para ${mf3}`, status: 'Aprovado', styled : {color: '#198754', fontSize: 36 }}
+                return {msg : `Você está com ${mf2.toFixed(1)} e sua nota arredondou para ${mf3}`, status: 'Aprovado 😝', styled : {color: '#4CAF50', fontSize: 24 }}
             } else {
-                return {msg : `Você está de DP`, status: 'Reprovado', styled : {color: '#B00020', fontSize: 36 }}
+                return {msg : `Você está de DP`, status: 'Reprovado 😞', styled : {color: '#FF5252', fontSize: 24 }}
             }
         }
     } else {
-        return {msg : "Insira os valores da np1 e np2", status: 'Erro', styled : {color: '#B00020', fontSize: 36 }}
+        return {msg : "Insira os valores da np1 e np2", status: 'Erro ✋', styled : {color: '#FF5252', fontSize: 24 }}
     }
 }
 

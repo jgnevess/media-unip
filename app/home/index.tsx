@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
-import { Btn, CloseButton, Input, Media, SubTitle, Title, Txt, Wrapper } from './styles';
+import { Btn, Close, CloseButton, Input, Media, ModalOverlay, SubTitle, Title, Txt, Wrapper } from './styles';
 import { useState } from 'react';
 import { calcularMedia, handleChange, Style } from './functions';
 import Modal from '../components';
@@ -58,38 +58,46 @@ const Home = () => {
 
     if (response) {
         return (
-            <Wrapper>
-                <CloseButton onPress={handleModal}><Media>❌</Media></CloseButton>
+            <ModalOverlay>
+                <CloseButton onPress={handleModal}><Close>❌</Close></CloseButton>
                 <Modal msg={msg} status={status} styled={styled!} />
-            </Wrapper>
+            </ModalOverlay>
         )
     }
 
     return (
         <Wrapper>
-            <Title>Média Unip</Title>
-            <SubTitle>Insira suas notas nos campos abaixo e clique em calcular nota</SubTitle>
-            <Txt>Insira a nota da NP1</Txt>
+            <Title>🎓 Média Unip</Title>
+            <SubTitle>Insira suas notas nos campos abaixo e clique em calcular média</SubTitle>
+            <Txt>NP1</Txt>
             <Input
+                placeholder='Insira sua nota'
+                placeholderTextColor='#ADB5BD'
                 value={np1}
                 keyboardType='numeric'
                 onChangeText={handleChangeNp1} />
-            <Txt>Insira a nota da NP2</Txt>
+            <Txt>NP2</Txt>
             <Input
+                placeholder='Insira sua nota'
+                placeholderTextColor='#ADB5BD'
                 value={np2}
                 keyboardType='numeric'
                 onChangeText={handleChangeNp2} />
-            <Txt>Insira a nota da PIM</Txt>
+            <Txt>PIM</Txt>
             <Input
+                placeholder='Insira sua nota'
+                placeholderTextColor='#ADB5BD'
                 value={pim}
                 keyboardType='numeric'
                 onChangeText={handleChangePim} />
-            <Txt>Insira a nota do Exame</Txt>
+            <Txt>Exame</Txt>
             <Input
+                placeholder='Insira sua nota'
+                placeholderTextColor='#ADB5BD'
                 value={exame}
                 keyboardType='numeric'
                 onChangeText={handleChangeExame} />
-            <Btn onPress={handleCalcMedia}><Text style={styles.txt}>Calcular Média 🧮</Text></Btn>
+            <Btn onPress={handleCalcMedia}><Text style={styles.txt}>Calcular Média ⚡</Text></Btn>
             <Btn onPress={handleClean}><Text style={styles.txt}>Limpar campos 🧹</Text></Btn>
         </Wrapper>
     );
