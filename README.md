@@ -15,8 +15,11 @@
 
 ## 📸 Capturas de Tela | Screenshots
 
-![LightScreenshot](screenshots/lightsc.png)
-![DarkScreenshot](screenshots/darksc.png)
+![LightScreenshot](screenshots/lighmain.png)
+![LightScreenshot](screenshots/lightmodal1.png)
+![LightScreenshot](screenshots/lightmodal2.png)
+![DarkScreenshot](screenshots/darkmain1.png)
+![DarkScreenshot](screenshots/darkmodal.png)
 
 ---
 ## 🛠️ Tecnologias | Technologies
