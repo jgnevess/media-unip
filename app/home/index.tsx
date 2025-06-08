@@ -1,8 +1,9 @@
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { Btn, Close, CloseButton, Input, Media, ModalOverlay, SubTitle, Title, Txt, Wrapper } from './styles';
 import { useState } from 'react';
-import { calcularMedia, handleChange, Style } from './functions';
-import Modal from '../components';
+import { araverageCalc, handleChange, Style } from './functions';
+import Modal from '../components/modal';
+import InputComponent from '../components/input';
 
 const Home = () => {
 
@@ -15,23 +16,23 @@ const Home = () => {
     const [styled, setStyled] = useState<Style>()
     const [response, setResponse] = useState(false)
 
-    const handleChangeNp1 = (entrada: string) => {
-        const res = handleChange(entrada);
+    const handleChangeNp1 = (inputText: string) => {
+        const res = handleChange(inputText);
         setNp1(res);
     }
 
-    const handleChangeNp2 = (entrada: string) => {
-        const res = handleChange(entrada);
+    const handleChangeNp2 = (inputText: string) => {
+        const res = handleChange(inputText);
         setNp2(res);
     }
 
-    const handleChangePim = (entrada: string) => {
-        const res = handleChange(entrada);
+    const handleChangePim = (inputText: string) => {
+        const res = handleChange(inputText);
         setPim(res);
     }
 
-    const handleChangeExame = (entrada: string) => {
-        const res = handleChange(entrada);
+    const handleChangeExame = (inputText: string) => {
+        const res = handleChange(inputText);
         setExame(res);
     }
 
@@ -45,7 +46,7 @@ const Home = () => {
     }
 
     const handleCalcMedia = () => {
-        const res = calcularMedia({ np1, np2, pim, exame });
+        const res = araverageCalc({ np1, np2, pim, exame });
         setMsg(res.msg)
         setStatus(res.status)
         setStyled(res.styled)
@@ -69,34 +70,34 @@ const Home = () => {
         <Wrapper>
             <Title>🎓 Média Unip</Title>
             <SubTitle>Insira suas notas nos campos abaixo e clique em calcular média</SubTitle>
-            <Txt>NP1</Txt>
-            <Input
+            <InputComponent 
+                onChangeText={handleChangeNp1}
                 placeholder='Insira sua nota'
                 placeholderTextColor='#ADB5BD'
                 value={np1}
-                keyboardType='numeric'
-                onChangeText={handleChangeNp1} />
-            <Txt>NP2</Txt>
-            <Input
+                txt='Np1'
+            />
+            <InputComponent 
+                onChangeText={handleChangeNp2}
                 placeholder='Insira sua nota'
                 placeholderTextColor='#ADB5BD'
                 value={np2}
-                keyboardType='numeric'
-                onChangeText={handleChangeNp2} />
-            <Txt>PIM</Txt>
-            <Input
+                txt='Np2'
+            />
+            <InputComponent 
+                onChangeText={handleChangePim}
                 placeholder='Insira sua nota'
                 placeholderTextColor='#ADB5BD'
                 value={pim}
-                keyboardType='numeric'
-                onChangeText={handleChangePim} />
-            <Txt>Exame</Txt>
-            <Input
+                txt='PIM'
+            />
+            <InputComponent 
+                onChangeText={handleChangeExame}
                 placeholder='Insira sua nota'
                 placeholderTextColor='#ADB5BD'
                 value={exame}
-                keyboardType='numeric'
-                onChangeText={handleChangeExame} />
+                txt='Exame'
+            />
             <Btn onPress={handleCalcMedia}><Text style={styles.txt}>Calcular Média ⚡</Text></Btn>
             <Btn onPress={handleClean}><Text style={styles.txt}>Limpar campos 🧹</Text></Btn>
         </Wrapper>

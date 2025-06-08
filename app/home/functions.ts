@@ -1,4 +1,4 @@
-export type MediaCalc = {
+export type AverageCalc = {
     np1: string
     np2: string
     pim: string
@@ -16,62 +16,62 @@ export type Style = {
     fontSize: number
 }
 
-export function handleChange(entrada: string): string {
-    let nota = parseFloat(entrada);
+export function handleChange(inputText: string): string {
+    let note = parseFloat(inputText);
     const regex = /^(10(\.0)?|[0-9](\.[0-9])?|[0-9]\.[0-9]?)?$/;
-    if (regex.test(entrada)) {
-        if (nota < 0 || nota > 10 && nota.toFixed(1)) {
+    if (regex.test(inputText)) {
+        if (note < 0 || note > 10 && note.toFixed(1)) {
             return ''
         }
         else {
-            return entrada
+            return inputText
         }
     }
     return '';
 }
 
-export const calcularMedia = ({ np1, np2, pim, exame }: MediaCalc) : Response => {
+export const araverageCalc = ({ np1, np2, pim, exame }: AverageCalc) : Response => {
     if (np1 !== '' && np2 !== '') {
 
         if (pim == '') {
-            const media = (Number.parseFloat(np1) * 4 + Number.parseFloat(np2) * 4) / 10;
-            if (media >= 7) {
-                return {msg : `Você está com ${media.toFixed(1)}`, status: 'Aprovado 😝', styled : {color: '#4CAF50', fontSize: 24 }}
+            const average = (Number.parseFloat(np1) * 4 + Number.parseFloat(np2) * 4) / 10;
+            if (average >= 7) {
+                return {msg : `Você está com ${average.toFixed(1)}`, status: 'Aprovado 😝', styled : {color: '#4CAF50', fontSize: 24 }}
             }
             else {
-                const notapim = (7 - media) / 0.20;
-                return {msg : `Você está com ${media.toFixed(1)} e precisa tirar nota ${notapim.toFixed(1)} no pim`, status: 'Aguardando Pim 🧐', styled : {color: '#FFD600', fontSize: 24 }}
+                const notepim = (7 - average) / 0.20;
+                return {msg : `Você está com ${average.toFixed(1)} e precisa tirar note ${notepim.toFixed(1)} no pim`, status: 'Aguardando Pim 🧐', styled : {color: '#FFD600', fontSize: 24 }}
             }
         }
         else if (exame == '') {
-            const media = (
+            const average = (
                 Number.parseFloat(np1) * 4
                 + Number.parseFloat(np2) * 4
                 + Number.parseFloat(pim) * 2
             ) / 10;
 
-            const mf1 = round(media);
+            const mf1 = round(average);
 
-            if (media < 7) {
+            if (average < 7) {
                 if (mf1 < 7) {
-                    const mf = (10 - media);
-                    return {msg : `Você está com ${media.toFixed(1)} e precisa tirar nota ${mf.toFixed(1)} no exame`, status: 'Exame 😰', styled : {color: '#FFD600', fontSize: 24 }}
+                    const mf = (10 - average);
+                    return {msg : `Você está com ${average.toFixed(1)} e precisa tirar nota ${mf.toFixed(1)} no exame`, status: 'Exame 😰', styled : {color: '#FFD600', fontSize: 24 }}
                 }
                 else {
-                    return {msg : `Você está com ${media.toFixed(1)} e a nota arredondou para ${mf1}`, status: 'Aprovado 😝', styled : {color: '#4CAF50', fontSize: 24 }}
+                    return {msg : `Você está com ${average.toFixed(1)} e sua nota arredondou para ${mf1}`, status: 'Aprovado 😝', styled : {color: '#4CAF50', fontSize: 24 }}
                 }
             } else {
-                return {msg : `Você está com ${media.toFixed(1)}`, status: 'Aprovado 😝', styled : {color: '#4CAF50', fontSize: 24 }}
+                return {msg : `Você está com ${average.toFixed(1)}`, status: 'Aprovado 😝', styled : {color: '#4CAF50', fontSize: 24 }}
             }
 
         }
         else {
-            const media = (
+            const average = (
                 Number.parseFloat(np1) * 4
                 + Number.parseFloat(np2) * 4
                 + Number.parseFloat(pim) * 2
             ) / 10;
-            const mf2 = (Number.parseFloat(exame) + media) / 2;
+            const mf2 = (Number.parseFloat(exame) + average) / 2;
             const mf3 = round(mf2);
             if (mf2 >= 5) {
                 return {msg : `Você está com ${mf2.toFixed(1)}`, status: 'Aprovado 😝', styled : {color: '#4CAF50', fontSize: 24 }}
